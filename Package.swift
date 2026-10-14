@@ -15,7 +15,7 @@ let package = Package(
             // Built by .github/workflows/build.yml on tag push (iOS, simulator and Mac Catalyst slices).
             // After tagging, copy the SHA 256 printed in the GitHub release notes here.
             url: "https://github.com/isontheline/network_ios/releases/download/v0.4/network_ios.xcframework.zip",
-            checksum: "REPLACE-WITH-SHA256-FROM-THE-v0.4-RELEASE-NOTES"
+            checksum: "bb4c166f92da9076483133ac7fc51c5d8be78687b849ac5e1efc625f779baa1e"
         )
     ]
 )
