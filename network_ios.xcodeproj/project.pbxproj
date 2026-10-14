@@ -237,7 +237,7 @@
 		22B752E92068D59500F2B025 /* sourceroute.c in Sources */ = {isa = PBXBuildFile; fileRef = 229EC3FD20265981004E76C6 /* sourceroute.c */; };
 		22B752EA2068D59A00F2B025 /* ping.c in Sources */ = {isa = PBXBuildFile; fileRef = 229EC3EB20259A53004E76C6 /* ping.c */; };
 		22B752EB2068D59A00F2B025 /* gmt2local.c in Sources */ = {isa = PBXBuildFile; fileRef = 229EC3F220264FCB004E76C6 /* gmt2local.c */; };
-		22E56C2A2B2999410062132D /* af_inet6.c in Sources */ = {isa = PBXBuildFile; fileRef = 22E56C292B2999410062132D /* af_inet6.c */; };
+		22E56C2A2B2999410062132D /* af_inet6.c in Sources */ = {isa = PBXBuildFile; fileRef = 22E56C292B2999410062132D /* af_inet6.c */; settings = {COMPILER_FLAGS = "-fno-modules"; }; };
 		22F0805D20984EB9003C3BF0 /* whois.c in Sources */ = {isa = PBXBuildFile; fileRef = 22F0805C20984EB9003C3BF0 /* whois.c */; };
 		D2334EA025C16BB800385378 /* ios_system.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2334E9F25C16BB800385378 /* ios_system.xcframework */; };
 		D28F12B920B44D6A0046B948 /* conn_lib.c in Sources */ = {isa = PBXBuildFile; fileRef = 229EC40820276228004E76C6 /* conn_lib.c */; };

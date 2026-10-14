@@ -9,6 +9,12 @@
 >   device instead of the 10.5 MB of the 2021 v0.2 binary (8.6 MB of `__LLVM` segment).
 > - Built against `ios_system` v3.0.6 (`xcfs/Package.swift`, `ios_error.h` downloaded from the
 >   same release).
+> - Source fixes for Xcode 26.6 (2026-10-14): `sources/ping.c` no longer includes the vendored
+>   `ip_var.h` (its `struct ipstat` clashes with the macOS SDK's under modules; only
+>   `MAX_IPOPTLEN` was needed), `ifconfig/af_inet6.c` is compiled with `-fno-modules` with
+>   `ios_error.h` included after the system headers (same clash on `netinet6/in6_var.h`), and
+>   `sources/netcat/netcat.c` passes `0` instead of `NULL` for the `intptr_t` argument of
+>   `EV_SET` (`-Wint-conversion` is an error since Xcode 16).
 >
 > Release procedure: push a `v*` tag, the CI workflow builds the xcframework, creates the GitHub
 > release with the SHA 256 in its notes, then copy that checksum into `Package.swift` (root) and

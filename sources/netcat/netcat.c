@@ -1781,8 +1781,9 @@ sockev_receive(void *arg)
 
 loop:
 	bzero(kev, sizeof(kev));
+	/* `data` is intptr_t: NULL is rejected by Xcode 26 (-Wint-conversion is an error). */
 	EV_SET(&kev[0], sock, EVFILT_SOCK, (EV_ADD | EV_ENABLE | EV_CLEAR),
-	    EVFILT_SOCK_ALL_MASK, NULL, NULL);
+	    EVFILT_SOCK_ALL_MASK, 0, NULL);
 
 	/* Wait for events */
 	result = kevent(kq, &kev[0], 1, &kev[1], 1, NULL);

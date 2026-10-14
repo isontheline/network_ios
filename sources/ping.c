@@ -96,8 +96,12 @@ __unused static const char copyright[] =
 #include <netinet/in_systm.h>
 #include <netinet/ip.h>
 #include <netinet/ip_icmp.h>
-// #include <netinet/ip_var.h> // not available on iOS
-#include "ip_var.h" // required because it defines structs
+// <netinet/ip_var.h> is not available on iOS, and the vendored copy "ip_var.h" (2017) conflicts
+// with the macOS SDK's own `struct ipstat` when building for Mac Catalyst (Xcode 26.6, 2026-10-14).
+// ping only needs MAX_IPOPTLEN from that header, so define it locally instead of including either.
+#ifndef MAX_IPOPTLEN
+#define MAX_IPOPTLEN 40
+#endif
 #include <arpa/inet.h>
 #include <net/if.h>
 #undef PRIVATE

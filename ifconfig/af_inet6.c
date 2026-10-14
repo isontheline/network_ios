@@ -56,9 +56,11 @@
  */
 
 #include <TargetConditionals.h>
-#if TARGET_OS_IPHONE || TARGET_OS_SIMULATOR
-#include "ios_error.h"
-#endif
+// On Mac Catalyst the macOS SDK ships netinet6/in6_var.h and nd6.h inside the Darwin module, so
+// the vendored copies this file needs (private ioctls) clash with it under -fmodules. This file is
+// therefore compiled with -fno-modules (per-file flag in the Xcode project), and "ios_error.h" is
+// included after the system headers: its `abort()` macro otherwise breaks the SDK's _abort.h
+// when headers are parsed textually. (Xcode 26.6, 2026-10-14)
 
 #include <sys/param.h>
 #include <sys/ioctl.h>
@@ -90,6 +92,9 @@
 #include "netinet6/nd6.h"
 #endif
 
+#if TARGET_OS_IPHONE || TARGET_OS_SIMULATOR
+#include "ios_error.h"
+#endif
 #include "ifconfig.h"
 
 extern	char *f_inet6, *f_addr;
