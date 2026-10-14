@@ -12,8 +12,10 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "network_ios",
-            url: "https://github.com/holzschu/network_ios/releases/download/v0.3/network_ios.xcframework.zip",
-            checksum: "9fe5f119b2d5568d2255e2540f36e76525bfbeaeda58f32f02592ca8d74f4178"
+            // Built by .github/workflows/build.yml on tag push (iOS, simulator and Mac Catalyst slices).
+            // After tagging, copy the SHA 256 printed in the GitHub release notes here.
+            url: "https://github.com/isontheline/network_ios/releases/download/v0.4/network_ios.xcframework.zip",
+            checksum: "REPLACE-WITH-SHA256-FROM-THE-v0.4-RELEASE-NOTES"
         )
     ]
 )

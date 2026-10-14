@@ -7,7 +7,7 @@ import FMake
 OutputLevel.default = .error
 
 enum Config {
-    static let iOSSystemVersion = "v3.0.1"
+    static let iOSSystemVersion = "v3.0.6"
     static let iOSSystemRoot    = "https://github.com/holzschu"
 
     static var iOSSystemErrorHURL: String {
@@ -17,9 +17,8 @@ enum Config {
 
 try download(url: Config.iOSSystemErrorHURL)
 
-// TODO: We can add more platforms here
-// let platforms: [Platform] = [.iPhoneOS, .iPhoneSimulator, .Catalyst]
-let platforms: [Platform] = [.iPhoneOS, .iPhoneSimulator]
+// Catalyst slice enabled in this fork (WebSSH ships on macOS through Mac Catalyst).
+let platforms: [Platform] = [.iPhoneOS, .iPhoneSimulator, .Catalyst]
 
 let schemes = [ "network_ios" ]
 

@@ -1,5 +1,19 @@
 # network_ios: network related commands for ios_system
 
+> **Fork notes (isontheline, 2026-10-14).** This fork exists to publish `network_ios.xcframework`
+> builds that upstream does not provide any more:
+>
+> - **Mac Catalyst slice** on top of iOS and simulator (`xcfs/Sources/build/main.swift`,
+>   `SUPPORTS_MACCATALYST = YES` on the framework target). Upstream v0.3 is iOS-only.
+> - **No embedded bitcode**: built with a current Xcode, so the framework weighs about 2 MB on
+>   device instead of the 10.5 MB of the 2021 v0.2 binary (8.6 MB of `__LLVM` segment).
+> - Built against `ios_system` v3.0.6 (`xcfs/Package.swift`, `ios_error.h` downloaded from the
+>   same release).
+>
+> Release procedure: push a `v*` tag, the CI workflow builds the xcframework, creates the GitHub
+> release with the SHA 256 in its notes, then copy that checksum into `Package.swift` (root) and
+> into the consumer manifest (`WebSSH_Native/WebSSH/Packages/ios_system_binaries/Package.swift`).
+
 
 <p align="center">
 <img src="https://img.shields.io/badge/Platform-iOS%2014.0+-lightgrey.svg" alt="Platform: iOS">
